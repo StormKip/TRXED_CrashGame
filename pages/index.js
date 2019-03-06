@@ -171,7 +171,7 @@ class Index extends Component{
         console.log("tmp_tronwebaddress", tmp_tronwebaddress);
 //  --------------------------------------------------------------------------------------------------------------------
         TRX_BAL =await Utils.tronWeb.trx.getBalance(tmp_tronwebaddress);
-        await this.setState({trxBalance: TRX_BAL/1000000});
+        await this.setState({trxBalance: TRX_BAL});
         console.log(TRX_BAL);
 
         let CONTRACT_BAL = await tronWeb.trx.getBalance("TRkUGYSyKp2NUsHGZUvSEWTc63Atbv8i7G");
@@ -209,7 +209,6 @@ class Index extends Component{
             TRX_BAL =await Utils.tronWeb.trx.getBalance(tmp_tronwebaddress);
             console.log(balanceBefore)
             console.log(TRX_BAL);
-            TRX_BAL = TRX_BAL/1000000
             if(didPlay){
                 if(balanceBefore> TRX_BAL){
                     this.setState({balanceColor: looseColor});
@@ -390,7 +389,7 @@ class Index extends Component{
 
         //this.setState({buttonStyle : normStyle});
     }
-    formatValue = value => `${Number(value).toFixed(2)} TRX`
+    formatValue = value => `${Number(value/1000000).toFixed(2)} TRX`
     render(){
         const { response } = this.state;
 
